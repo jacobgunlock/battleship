@@ -1,17 +1,18 @@
-module.exports = function Ship(length) {
-    return {
-        length: length,
-        destroyed: false,
-        totalHits: 0,
-        hit() {
-            this.totalHits++;
-            return this.totalHits;
-        },
-        isSunk() {
-            if (this.length == this.totalHits) {
-                this.destroyed = true;
-            }
-            return this.destroyed;
-        }
+const Ship = size => {
+    const length = size;
+    let destroyed = false;
+    let totalHits = 0;
+    const hit = () => {
+        totalHits++;
+        return totalHits;
     }
+    const isSunk = () => {
+        if (length == totalHits) {
+            destroyed = true;
+        }
+        return destroyed;
+    }    
+    return {hit, isSunk}
 }
+
+module.exports = Ship;
