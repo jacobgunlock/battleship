@@ -41,11 +41,19 @@ test('receives attack / hit', () => {
     expect(attack2).toBe(2);
 });
 
-test('ships are sunk', () => {
+test('check ship count', () => {
     const g = gameboard();
-    const ship = g.placeShip(3,[3,3],'vertical');
+    const ship = g.placeShip(1,[3,3],'vertical');
+    const ship2 = g.placeShip(3,[4,1],'vertical');
     g.receiveAttack(3,3);
-    g.receiveAttack(3,4);
-    g.receiveAttack(3,5);
-    expect(ship.isSunk()).toBe(true);
+    expect(g.getShipCount()).toBe(1);
 });
+
+test('is all sunk', () => {
+    const g = gameboard();
+    const ship = g.placeShip(1,[3,3],'vertical');
+    const ship2 = g.placeShip(1,[5,5],'vertical');
+    g.receiveAttack(3,3);
+    g.receiveAttack(5,5);
+    expect(g.isAllSunk()).toBe(true)
+})

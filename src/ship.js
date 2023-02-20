@@ -2,15 +2,14 @@ const Ship = size => {
     const length = size;
     let destroyed = false;
     let totalHits = 0;
-    
     const hit = () => {
         totalHits++;
-        isSunk();
-        return totalHits
+        if (isSunk() == true) return true;
+        else return totalHits;
     }
     const isSunk = () => {
-        if (length === totalHits) return destroyed = true;
-        else return false;
+        if (length === totalHits) destroyed = true;
+        return destroyed;
     }    
     return {hit, isSunk, totalHits}
 }

@@ -1,7 +1,7 @@
 const ship = require("../ship")
 
 test('ship hit', () => {
-    const boat = ship(1);
+    const boat = ship(2);
     expect(boat.hit()).toBe(1);
 })
 
