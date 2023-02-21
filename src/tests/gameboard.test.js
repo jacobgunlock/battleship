@@ -12,25 +12,29 @@ test('fails placing out of bounds', () => {
 })
 
 test('place ship correctly on axis', () => {
-    const horizontal = gameboard().placeShip(3,[3,3],'horizontal')
-    expect(horizontal.tiles).toStrictEqual([[3, 3], [4, 3], [5, 3]])
-    
-    const vertical = gameboard().placeShip(3,[3,3],'vertical')
-    expect(vertical.tiles).toStrictEqual([[3, 3], [3, 4], [3, 5]])
+    const g = gameboard();
+    g.placeShip(3,[0,0],'horizontal');
+    expect(g.board[0][0].ship).not.toBe(null);
+    expect(g.board[2][0].ship).not.toBe(null);
+    g.placeShip(3,[5,5],'vertical');
+    expect(g.board[5][5].ship).not.toBe(null);
+    expect(g.board[5][7].ship).not.toBe(null);
 });
 
 test('place ship on board', () => {
     const board = gameboard();
     const ship = board.placeShip(3,[3,3],'vertical');
-    expect(board.board[3][3].tiles[0]).toBe(ship.tiles[0])
-    expect(board.board[3][4].tiles[1]).toBe(ship.tiles[1])
-    expect(board.board[3][5].tiles[2]).toBe(ship.tiles[2])
+    expect(board.board[3][3].ship.tiles[0]).toBe(ship.tiles[0])
+    expect(board.board[3][4].ship.tiles[1]).toBe(ship.tiles[1])
+    expect(board.board[3][5].ship.tiles[2]).toBe(ship.tiles[2])
 })
 
 test('receives attack / miss', () => {
     const g = gameboard();
     const ship = g.placeShip(3,[3,3],'vertical');
-    expect(g.receiveAttack(2,2)).toBe(true);
+    g.receiveAttack(7,7)
+    expect(g.board[7][7].shot).toBe(true);
+    expect(g.board[7][7].ship).toBe(null);
 });
 
 test('receives attack / hit', () => {
@@ -56,4 +60,11 @@ test('is all sunk', () => {
     g.receiveAttack(3,3);
     g.receiveAttack(5,5);
     expect(g.isAllSunk()).toBe(true)
+})
+
+test('doesnt lay ship in occupied space', () => {
+    const g = gameboard();
+    const ship = g.placeShip(3,[3,3],'vertical');
+    const ship2 = g.placeShip(5,[1,5],'horizontal');
+    expect(g.getShipCount()).toBe(1);
 })

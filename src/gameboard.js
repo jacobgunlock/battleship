@@ -8,14 +8,17 @@ const Gameboard = () => {
         for (let i = 0; i < 10; i++) {
             board[i] = [];
             for (let j = 0; j < 10; j++) {
-                board[i][j] = false;
+                board[i][j] = {
+                    ship: null,
+                    shot: false
+                };
             }
         }
     })();
 
     const placeShip = (length, coord, axis) => {
         if (coord[0] + length > 9 || coord[1] + length > 9) return false;
-
+        if (board[coord[0]][coord[1]].ship !== null) return false;
         let tiles = [];
         for (let i = 0; i < length; i++) {
             if (axis === "horizontal") tiles.push([coord[0] + i, coord[1]]);
@@ -25,16 +28,17 @@ const Gameboard = () => {
         const boat = Ship(length);
         boat.tiles = tiles;
         tiles.forEach((tile) => {
-            board[tile[0]][tile[1]] = boat;
+            board[tile[0]][tile[1]].ship = boat;
         });
         shipCount++
         return boat;
     };
 
     const receiveAttack = (x, y) => {
-        if (board[x][y] === false) return (board[x][y] = true);
-        if (board[x][y] !== false) {
-            const hit = board[x][y].hit();
+        board[x][y].shot = true;
+        if (board[x][y].ship === null) return 'miss'
+        if (board[x][y].ship !== null) {
+            const hit = board[x][y].ship.hit();
             if (hit === true) shipCount--;
             return hit;
         }

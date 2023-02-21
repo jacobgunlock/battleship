@@ -10,7 +10,8 @@ const Ship = size => {
     const isSunk = () => {
         if (length === totalHits) destroyed = true;
         return destroyed;
-    }    
-    return {hit, isSunk, totalHits}
+    }
+    const getTotalHits = () => {return totalHits};
+    return {hit, isSunk, totalHits, getTotalHits}
 }
 module.exports = Ship;
