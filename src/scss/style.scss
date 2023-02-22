@@ -1,0 +1,43 @@
+$primary-color: #007bff;
+
+body {
+    background-color: $primary-color;
+}
+
+.content {
+    .players {
+        background-color: lightblue;
+        display: flex;
+        justify-content: space-evenly;
+    }
+
+    .gameboards {
+        background-color: pink;
+        height: 500px;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        padding: 20px;
+        gap: 20px;
+
+        #player-board {
+            display: grid;
+            height: 400px;
+            width: 400px;
+            background-color: green;
+            .row-p1 {
+                display: flex;
+                justify-content: space-evenly;
+                .cell {
+                    border: solid;
+                    width: 30px;
+                }
+            }
+        }
+        
+        #enemy-board {
+            height: 200px;
+            background-color: red;
+
+        }
+    }
+}
