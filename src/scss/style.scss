@@ -19,25 +19,53 @@ body {
         padding: 20px;
         gap: 20px;
 
-        #player-board {
+        .board {
             display: grid;
             height: 400px;
             width: 400px;
-            background-color: green;
-            .row-p1 {
+            .row {
                 display: flex;
                 justify-content: space-evenly;
+                
                 .cell {
-                    border: solid;
-                    width: 30px;
+                    border: solid 1px;
+                    width: 10%
                 }
             }
         }
-        
-        #enemy-board {
-            height: 200px;
-            background-color: red;
+        #player {
+            background-color: lightgreen;
 
+            .ship {
+                background-color: darken($color: lightgreen, $amount: 40);
+            }
+
+            .hit {
+                background-color: black;
+            }
+        }
+        
+        #enemy {
+            $enemy-board-color: coral;
+            background-color: $enemy-board-color;
+            .ship {
+                background-color: darken($color: $enemy-board-color, $amount: 40);
+            }
+
+            .hit {
+                background-color: black;
+            }
+
+            .miss {
+                background-color: red;
+            }
+
+            .sunk {
+                background-color: blue;
+            }
+            .active:hover {
+                background-color: darken($color: $enemy-board-color, $amount: 20);
+            }
         }
     }
 }
