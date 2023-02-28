@@ -1,5 +1,6 @@
 const gameboard = require("./gameboard");
-function Player() {
+function Player(n) {
+    const name = n;
     let board = gameboard();
     const attack = (enemy, x, y) => {
         return enemy.board.receiveAttack(x, y);
@@ -11,8 +12,12 @@ function Player() {
             x = Math.floor(Math.random() * 10);
             y = Math.floor(Math.random() * 10);
         }
-        return attack(enemy, x, y);
+        return {
+            shot: attack(enemy, x, y),
+            x: x,
+            y: y
+        }
     };
-    return { board, attack, compAttack };
+    return { name, board, attack, compAttack };
 };
 module.exports = Player;

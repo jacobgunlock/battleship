@@ -32,16 +32,23 @@ body {
                     width: 10%
                 }
             }
+            .hit {
+                background-color: black;
+            }
+    
+            .miss {
+                background-color: red;
+            }
+    
+            .sunk {
+                background-color: blue;
+            }
         }
         #player {
             background-color: lightgreen;
 
             .ship {
                 background-color: darken($color: lightgreen, $amount: 40);
-            }
-
-            .hit {
-                background-color: black;
             }
         }
         
@@ -52,17 +59,6 @@ body {
                 background-color: darken($color: $enemy-board-color, $amount: 40);
             }
 
-            .hit {
-                background-color: black;
-            }
-
-            .miss {
-                background-color: red;
-            }
-
-            .sunk {
-                background-color: blue;
-            }
             .active:hover {
                 background-color: darken($color: $enemy-board-color, $amount: 20);
             }
