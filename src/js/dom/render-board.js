@@ -29,8 +29,11 @@ function renderBoards(p1, p2) {
                 const coord = oppCell.id.slice(-2);
                 const shot = p1.attack(p2, coord[0], coord[1]);
                 if (processShot(shot, p2, document.getElementById(`${p2.name}:${coord[0]}${coord[1]}`))) return;
-                const enemyShot = p2.compAttack(p1);
-                if (processShot(enemyShot.shot, p1, document.getElementById(`${p1.name}:${enemyShot.x}${enemyShot.y}`))) return;
+                
+                setTimeout(() => {
+                    const enemyShot = p2.compAttack(p1);
+                    if (processShot(enemyShot.shot, p1, document.getElementById(`${p1.name}:${enemyShot.x}${enemyShot.y}`))) return;
+                }, 1000);
             }, { once: true });
         }
     }
