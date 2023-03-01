@@ -1,5 +1,4 @@
-const Ship = require("./ship");
-
+import Ship from './ship';
 const Gameboard = () => {
     let shipCount = 0;
     let board = [];
@@ -17,8 +16,11 @@ const Gameboard = () => {
     })();
 
     const placeShip = (length, coord, axis) => {
-        if (coord[0] + length > 9 || coord[1] + length > 9) return false;
+        if (coord[0] > 10 || coord[0] < 0 || coord[1] > 10 || coord[1] < 0) return false;
         if (board[coord[0]][coord[1]].ship !== null) return false;
+        if (axis === 'horizontal') if ((coord[1] + length) > 10) return false;
+        if (axis === 'vertical') if ((coord[0] + length) > 10) return false;
+
         let tiles = [];
         for (let i = 0; i < length; i++) {
             if (axis === "vertical") tiles.push([coord[0] + i, coord[1]]);
@@ -55,5 +57,4 @@ const Gameboard = () => {
 
     return { board, shipCount, placeShip, receiveAttack, getShipCount, isAllSunk };
 };
-
-module.exports = Gameboard;
+export default Gameboard;

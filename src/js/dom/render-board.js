@@ -1,24 +1,28 @@
-const p1 = require('../scripts/game');
-const p2 = require('../scripts/game');
-const processShot = require('./process-shot')
+import { p1, p2 } from "../scripts/game";
+import processShot from './process-shot';
+import dragDrop from './drag-drop';
 
-function renderBoards(p1, p2) {
+export default function renderBoards(p1, p2) {
+    const player = document.getElementById('player');
+    const enemy = document.getElementById('enemy');
+    player.innerHTML = '';
+    enemy.innerHTML = '';
     for (let i = 0; i < 10; i++) {
         //p1
         const row = document.createElement('div');
         row.classList.add('row');
-        document.getElementById('player').appendChild(row);
+        player.appendChild(row);
         //p2
         const oppRow = document.createElement('div');
         oppRow.classList.add('row');
-        document.getElementById('enemy').appendChild(oppRow);
+        enemy.appendChild(oppRow);
         
         for (let j = 0; j < 10; j++) {
             const cell = document.createElement('div');
             cell.classList.add("cell");
             if (p1.board.board[i][j].ship !== null) cell.classList.add('ship');
             cell.setAttribute('id', `${p1.name}:${i}${j}`); 
-            row.appendChild(cell);   
+            row.appendChild(cell);
             
             const oppCell = document.createElement('div');
             oppCell.classList.add('cell','active');
@@ -37,5 +41,5 @@ function renderBoards(p1, p2) {
             }, { once: true });
         }
     }
+    dragDrop(p1,p2);
 }
-module.exports = { renderBoards };

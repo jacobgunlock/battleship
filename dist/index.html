@@ -1,27 +1,27 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style.css">
-    <title>Document</title>
-</head>
-<body>
-    <h1>Battleship</h1>
-    <div class="content">
-        <div class="players">
-            <h2 class="enemy">Enemy</h2>
-            <h2 class="player">Player</h2>
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link rel="stylesheet" href="style.css" />
+        <title>Document</title>
+    </head>
+    <body>
+        <h1>Battleship</h1>
+        <div class="content">
+            <div class="players">
+                <h2 class="enemy">Enemy</h2>
+                <h2 class="player">Player</h2>
+            </div>
+            <div class="gameboards">
+                <div class="board" id="enemy"></div>
+                <div class="board" id="player"></div>
+            </div>
+            <div class="info"></div>
+            <div class="ships"></div>
+            <div class="winner hidden"></div>
         </div>
-        <div class="gameboards">
-            <div class="board" id="enemy"></div>
-            <div class="board" id="player"></div>
-        </div>
-        <div class="info">
-        </div>
-        <div class="winner hidden"></div>
-    </div>
-</body>
-<script src="./main.js"></script>
+    </body>
+    <script src="./main.js"></script>
 </html>

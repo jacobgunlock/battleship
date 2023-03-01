@@ -1,6 +1,6 @@
-const renderWin = require('../dom/render-win')
+import renderWin from '../dom/render-win';
 
-function processShot(shot, player, cell) {
+export default function processShot(shot, player, cell) {
     const target = cell.id.slice(-2)
     cell.classList.remove('active');
     if (shot === "miss") cell.classList.add("miss");
@@ -20,4 +20,3 @@ function processShot(shot, player, cell) {
         return true;
     }
 }
-module.exports = processShot

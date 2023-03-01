@@ -1,10 +1,5 @@
-const player = require('./player');
+import Player from './player';
+const p1 = Player('Player');
+const p2 = Player('Computer');
 
-const p1 = player('Player');
-const p2 = player('Computer');
-
-p1.board.placeShip(2, [3,3], 'horizontal');
-
-p2.board.placeShip(2, [7,7], 'vertical');
-
-module.exports = { p1, p2 }
+export {p1, p2};

@@ -1,7 +1,8 @@
-const gameboard = require("./gameboard");
-function Player(n) {
+import Gameboard from "./gameboard";
+
+export default function Player(n) {
     const name = n;
-    let board = gameboard();
+    let board = Gameboard();
     const attack = (enemy, x, y) => {
         return enemy.board.receiveAttack(x, y);
     };
@@ -20,4 +21,3 @@ function Player(n) {
     };
     return { name, board, attack, compAttack };
 };
-module.exports = Player;

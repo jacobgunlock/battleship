@@ -1,4 +1,4 @@
-function renderWin(player) {
+export default function renderWin(player) {
     const cells = document.getElementsByClassName("cell");
     Array.from(cells).forEach((cell) => {
         cell.classList.remove("active");
@@ -9,5 +9,3 @@ function renderWin(player) {
     if (player.name === "Computer") console.log("You Won!");
     else console.log("Computer Won!");
 }
-
-module.exports = renderWin;

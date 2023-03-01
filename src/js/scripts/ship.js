@@ -14,4 +14,4 @@ const Ship = size => {
     const getTotalHits = () => {return totalHits};
     return {hit, isSunk, totalHits, getTotalHits}
 }
-module.exports = Ship;
+export default Ship;

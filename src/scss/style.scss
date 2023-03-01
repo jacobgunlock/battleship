@@ -13,7 +13,7 @@ body {
 
     .gameboards {
         background-color: pink;
-        height: 500px;
+        height: 400px;
         display: grid;
         grid-template-columns: 1fr 1fr;
         padding: 20px;
@@ -51,7 +51,6 @@ body {
                 background-color: darken($color: lightgreen, $amount: 40);
             }
         }
-        
         #enemy {
             $enemy-board-color: coral;
             background-color: $enemy-board-color;
@@ -61,6 +60,23 @@ body {
 
             .active:hover {
                 background-color: darken($color: $enemy-board-color, $amount: 20);
+            }
+        }
+    }
+
+    .ships {
+        background-color: yellow;
+        height: 100px;
+        .ship{
+            display: flex;
+            width: max-content;
+            .cell {
+                height: 30px;
+                width: 30px;
+                border: solid;
+            }
+            .hover:hover {
+                background-color: darken(yellow, 10);
             }
         }
     }
