@@ -23,8 +23,14 @@ const Gameboard = () => {
 
         let tiles = [];
         for (let i = 0; i < length; i++) {
-            if (axis === "vertical") tiles.push([coord[0] + i, coord[1]]);
-            else if (axis === "horizontal") tiles.push([coord[0], coord[1] + i]);
+            if (axis === "vertical") {
+                if (board[(coord[0]) + i][coord[1]].ship !== null) return false;
+                tiles.push([coord[0] + i, coord[1]]);
+            }
+            else if (axis === "horizontal") {
+                if (board[coord[0]][(coord[1] + i)].ship !== null) return false;
+                tiles.push([coord[0], coord[1] + i]);
+            }
         }
 
         const boat = Ship(length);
