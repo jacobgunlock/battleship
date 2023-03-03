@@ -61,6 +61,23 @@ const Gameboard = () => {
         else return false
     }
 
-    return { board, shipCount, placeShip, receiveAttack, getShipCount, isAllSunk };
+    const randomFleet = () => {
+        const ships = [5,4,3,3,2]
+        ships.forEach(len => {
+            let axis = Math.round(Math.random()) === 1 ? 'horizontal' : 'vertical'
+            let boat = false;
+            while (boat === false) {
+                let x = Math.floor(Math.random() * 10);
+                let y = Math.floor(Math.random() * 10);
+                while (board[x][y].ship !== null) {
+                    x = Math.floor(Math.random() * 10);
+                    y = Math.floor(Math.random() * 10);
+                }
+                boat = placeShip(len, [x,y], axis);
+            };
+        });
+    };
+
+    return { board, shipCount, placeShip, receiveAttack, getShipCount, isAllSunk, randomFleet };
 };
 export default Gameboard;

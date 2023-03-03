@@ -1,7 +1,7 @@
 import '../scss/style.scss';
 import { p1, p2 } from "./scripts/game";
 import renderBoards from './dom/render-board';
+import dragDrop from './dom/drag-drop'
 
-p1.board.placeShip(5, [3,3], 'horizontal');
-p2.board.placeShip(5, [0,0], 'vertical');
+p2.board.randomFleet();
 renderBoards(p1, p2);

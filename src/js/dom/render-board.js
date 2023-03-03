@@ -16,7 +16,7 @@ export default function renderBoards(p1, p2) {
         const oppRow = document.createElement('div');
         oppRow.classList.add('row');
         enemy.appendChild(oppRow);
-        
+
         for (let j = 0; j < 10; j++) {
             const cell = document.createElement('div');
             cell.classList.add("cell");

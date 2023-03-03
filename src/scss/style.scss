@@ -67,6 +67,8 @@ body {
     .ships {
         background-color: yellow;
         height: 100px;
+        display: flex;
+        justify-content: space-evenly;
         .ship{
             display: flex;
             width: max-content;
