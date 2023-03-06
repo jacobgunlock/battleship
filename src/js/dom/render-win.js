@@ -5,7 +5,8 @@ export default function renderWin(player) {
         const newCell = cell.cloneNode(true);
         cell.parentNode.replaceChild(newCell, cell);
     });
-    
-    if (player.name === "Computer") console.log("You Won!");
-    else console.log("Computer Won!");
+    const winner = document.querySelector('.winner');
+    winner.classList.remove('hidden');
+    if (player.name === "Computer") winner.innerHTML = "You Won!";
+    else winner.innerHTML = "Computer Won!";
 }

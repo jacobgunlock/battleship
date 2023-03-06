@@ -2,8 +2,13 @@ import renderBoards from "./render-board";
 
 export default function dragDrop(p1, p2) {
     const allships = document.querySelector(".ships");
+    if (allships.classList.contains('done')) {
+        allships.parentElement.removeChild(allships);
+        return; 
+    }
     let axis;
     let length;
+    let currShip;
     if (allships.innerHTML === "") {
         const fleet = [2, 3, 3, 4, 5];
         fleet.forEach((boat) => {
@@ -24,11 +29,11 @@ export default function dragDrop(p1, p2) {
             allships.appendChild(ship);
         });
     }
-    console.log(allships.childNodes);
     Array.from(allships.childNodes).forEach((ship) => {
         ship.addEventListener("dragstart", () => {
             axis = ship.style.flexDirection;
             length = ship.childNodes.length;
+            currShip = ship
         });
     });
 
@@ -42,9 +47,13 @@ export default function dragDrop(p1, p2) {
             const coord = cell.id.slice(-2);
             const x = Number(coord[0]);
             const y = Number(coord[1]);
-            console.log(length);
             const boat = p1.board.placeShip(length, [x, y], direction);
-            renderBoards(p1, p2);
+            if (boat === false) return;
+            else {
+                currShip.parentElement.removeChild(currShip);
+                if (allships.innerHTML === '') allships.classList.add('done');
+                renderBoards(p1, p2);
+            }
         });
     });
 }
